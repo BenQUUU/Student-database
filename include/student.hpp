@@ -3,8 +3,8 @@
 #include <string>
 
 enum class Gender{
-    male,
-    female
+    Male,
+    Female
 };
 
 class Student{
@@ -15,6 +15,7 @@ public:
     int indexNumber,
     std::string pesel,
     Gender gender);
+    bool operator==(const Student &other) const;
 private:
     std::string firstName;
     std::string lastName;

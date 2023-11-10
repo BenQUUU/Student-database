@@ -4,8 +4,11 @@ project(student_database)
 set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-add_executable(${PROJECT_NAME} src/main.cpp
-        src/student.cpp)
+set(SOURCE
+        src/student.cpp
+        src/database.cpp)
+
+add_executable(${PROJECT_NAME} ${SOURCE} src/main.cpp)
 
 include(FetchContent)
 FetchContent_Declare(
@@ -18,11 +21,7 @@ FetchContent_MakeAvailable(googletest)
 
 enable_testing()
 
-add_executable(
-        ${PROJECT_NAME}-ut
-        tests/tests.cpp
-        src/student.cpp
-)
+add_executable(${PROJECT_NAME}-ut tests/tests.cpp ${SOURCE})
 target_link_libraries(
         ${PROJECT_NAME}-ut
         GTest::gtest_main
