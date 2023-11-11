@@ -5,14 +5,38 @@ Student::Student(std::string firstName,
                  std::string address,
                  int indexNumber,
                  std::string pesel,
-                 Gender gender): firstName(firstName), lastName(lastName), address(address),
-                 indexNumber(indexNumber), pesel(pesel), gender(gender){}
+                 Gender gender):
+            firstName_(firstName)
+          , lastName_(lastName)
+          , address_(address)
+          , indexNumber_(indexNumber)
+          , pesel_(pesel)
+          , gender_(gender)
+{}
 
 bool Student::operator==(const Student &other) const{
-    return (firstName == other.firstName) &&
-            (lastName == other.lastName) &&
-            (address == other.address) &&
-            (indexNumber == other.indexNumber) &&
-            (pesel == other.pesel) &&
-            (gender == other.gender);
+    return (firstName_ == other.firstName_) &&
+            (lastName_ == other.lastName_) &&
+            (address_ == other.address_) &&
+            (indexNumber_ == other.indexNumber_) &&
+            (pesel_ == other.pesel_) &&
+            (gender_ == other.gender_);
+}
+
+std::string Student::getGenderAsString() const {
+    switch (gender_) {
+        case Gender::Male:
+            return "Male";
+        case Gender::Female:
+            return "Female";
+    }
+}
+
+std::string Student::show() const {
+    return firstName_ + " "
+        + lastName_ + "; "
+        + address_ + "; "
+        + std::to_string(indexNumber_) + "; "
+        + pesel_ + "; "
+        + getGenderAsString();
 }

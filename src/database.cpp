@@ -1,4 +1,5 @@
 #include <algorithm>
+#include <iostream>
 #include "../include/database.hpp"
 
 
@@ -15,3 +16,18 @@ bool Database::isAdded(const Student &s) {
 
     return false;
 }
+
+std::string Database::show() const {
+    std::string result = "";
+    for(auto && student: student_){
+        result += student.show();
+    }
+
+    return result;
+}
+
+void Database::displayDatabase() const {
+    std::cout << show();
+}
+
+
