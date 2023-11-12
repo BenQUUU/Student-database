@@ -66,3 +66,27 @@ TEST_F(DatabaseTest, SearchStudentByNameThrowsException){
         db.searchStudentByName(notExistingName);
     }, std::runtime_error);
 }
+
+TEST_F(DatabaseTest, SearchStudentByPESEL){
+    Student adam{
+            "Adam",
+            "Kowalski",
+            "ul. Dobra 134, 00-200 Warszawa",
+            123456,
+            "11223344556",
+            Gender::Male
+    };
+    db.addStudent(adam);
+
+    auto content = db.searchStudentByPESEL("11223344556");
+    auto expected = "Adam Kowalski; ul. Dobra 134, 00-200 Warszawa; 123456; 11223344556; Male";
+    EXPECT_EQ(content, expected);
+}
+
+TEST_F(DatabaseTest, SearchStudentByPESELThrowsException){
+    std::string notExistingPESEL = "11111111111";
+
+    ASSERT_THROW({
+        db.searchStudentByName(notExistingPESEL);
+    }, std::runtime_error);
+}

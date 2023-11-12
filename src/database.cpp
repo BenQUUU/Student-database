@@ -39,4 +39,13 @@ std::string Database::searchStudentByName(std::string name) const {
     throw std::runtime_error("No student with this name was found in the database");
 }
 
+std::string Database::searchStudentByPESEL(std::string pesel) const {
+    for(auto && student : student_){
+        if(student.getPESEL() == pesel){
+            return student.show();
+        }
+    }
+    throw std::runtime_error("No student with this PESEL was found in the database");
+}
+
 

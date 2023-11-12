@@ -10,6 +10,7 @@ public:
     bool isAdded(const Student &s);
     std::string show() const;
     std::string searchStudentByName(std::string name) const;
+    std::string searchStudentByPESEL(std::string pesel) const;
 private:
     std::vector<Student> student_;
 };

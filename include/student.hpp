@@ -18,6 +18,7 @@ public:
     bool operator==(const Student &other) const;
     std::string show() const;
     std::string getLastName() const;
+    std::string getPESEL() const;
 private:
     std::string firstName_;
     std::string lastName_;
