@@ -40,3 +40,7 @@ std::string Student::show() const {
         + pesel_ + "; "
         + getGenderAsString();
 }
+
+std::string Student::getLastName() const {
+    return lastName_;
+}

@@ -30,4 +30,13 @@ void Database::displayDatabase() const {
     std::cout << show();
 }
 
+std::string Database::searchStudentByName(std::string name) const {
+    for(auto && student : student_){
+        if(student.getLastName() == name){
+            return student.show();
+        }
+    }
+    throw std::runtime_error("No student with this name was found in the database");
+}
+
 

@@ -17,6 +17,7 @@ public:
     Gender gender);
     bool operator==(const Student &other) const;
     std::string show() const;
+    std::string getLastName() const;
 private:
     std::string firstName_;
     std::string lastName_;

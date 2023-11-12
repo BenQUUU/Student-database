@@ -9,7 +9,7 @@ public:
     void displayDatabase() const;
     bool isAdded(const Student &s);
     std::string show() const;
+    std::string searchStudentByName(std::string name) const;
 private:
     std::vector<Student> student_;
-
 };

@@ -43,3 +43,26 @@ TEST_F(DatabaseTest, DisplayNotEmptyDb){
     EXPECT_EQ(content, expected);
 }
 
+TEST_F(DatabaseTest, SearchStudentByName){
+    Student adam{
+            "Adam",
+            "Kowalski",
+            "ul. Dobra 134, 00-200 Warszawa",
+            123456,
+            "11223344556",
+            Gender::Male
+    };
+    db.addStudent(adam);
+
+    auto content = db.searchStudentByName("Kowalski");
+    auto expected = "Adam Kowalski; ul. Dobra 134, 00-200 Warszawa; 123456; 11223344556; Male";
+    EXPECT_EQ(content, expected);
+}
+
+TEST_F(DatabaseTest, SearchStudentByNameThrowsException){
+    std::string notExistingName = "Something";
+
+    ASSERT_THROW({
+        db.searchStudentByName(notExistingName);
+    }, std::runtime_error);
+}
