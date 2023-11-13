@@ -48,3 +48,11 @@ std::string Student::getLastName() const {
 std::string Student::getPESEL() const {
     return pesel_;
 }
+
+bool Student::compareByPESEL(const Student &a, const Student &b) {
+    return a.pesel_ < b.pesel_;
+}
+
+bool Student::compareByName(const Student &a, const Student &b) {
+    return a.lastName_ < b.lastName_;
+}

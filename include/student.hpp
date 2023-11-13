@@ -19,6 +19,8 @@ public:
     std::string show() const;
     std::string getLastName() const;
     std::string getPESEL() const;
+    static bool compareByPESEL(const Student &a, const Student &b);
+    static bool compareByName(const Student &a, const Student &b);
 private:
     std::string firstName_;
     std::string lastName_;

@@ -1,6 +1,7 @@
 #include <iostream>
+#include "../include/database.hpp"
+#include "../include/student.hpp"
 
 int main() {
-    std::cout << "Hello, World!" << std::endl;
     return 0;
 }

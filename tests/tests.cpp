@@ -90,3 +90,58 @@ TEST_F(DatabaseTest, SearchStudentByPESELThrowsException){
         db.searchStudentByName(notExistingPESEL);
     }, std::runtime_error);
 }
+
+TEST_F(DatabaseTest, SortDbByPESEL){
+    Student adam{
+            "Adam",
+            "Kowalski",
+            "ul. Dobra 134, 00-200 Warszawa",
+            123456,
+            "51223344556",
+            Gender::Male
+    };
+    db.addStudent(adam);
+
+    Student anna{
+            "Anna",
+            "Jowalska",
+            "ul. Dobra 139, 00-200 Warszawa",
+            234551,
+            "31223344556",
+            Gender::Female
+    };
+    db.addStudent(anna);
+
+    db.sortByPESEL();
+    auto content = db.show();
+    auto expected = "Anna Jowalska; ul. Dobra 139, 00-200 Warszawa; 234551; 31223344556; FemaleAdam Kowalski; ul. Dobra 134, 00-200 Warszawa; 123456; 51223344556; Male";
+    EXPECT_EQ(content, expected);
+}
+
+TEST_F(DatabaseTest, SortDbByName){
+    Student adam{
+            "Adam",
+            "Kowalski",
+            "ul. Dobra 134, 00-200 Warszawa",
+            123456,
+            "51223344556",
+            Gender::Male
+    };
+    db.addStudent(adam);
+
+    Student anna{
+            "Anna",
+            "Jowalska",
+            "ul. Dobra 139, 00-200 Warszawa",
+            234551,
+            "31223344556",
+            Gender::Female
+    };
+    db.addStudent(anna);
+
+    db.sortByName();
+    auto content = db.show();
+    auto expected = "Anna Jowalska; ul. Dobra 139, 00-200 Warszawa; 234551; 31223344556; FemaleAdam Kowalski; ul. Dobra 134, 00-200 Warszawa; 123456; 51223344556; Male";
+    EXPECT_EQ(content, expected);
+}
+

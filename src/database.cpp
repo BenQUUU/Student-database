@@ -48,4 +48,12 @@ std::string Database::searchStudentByPESEL(std::string pesel) const {
     throw std::runtime_error("No student with this PESEL was found in the database");
 }
 
+void Database::sortByPESEL() {
+    std::sort(student_.begin(), student_.end(), Student::compareByPESEL);
+}
+
+void Database::sortByName() {
+    std::sort(student_.begin(), student_.end(), Student::compareByName);
+}
+
 

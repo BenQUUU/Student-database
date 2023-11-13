@@ -11,6 +11,8 @@ public:
     std::string show() const;
     std::string searchStudentByName(std::string name) const;
     std::string searchStudentByPESEL(std::string pesel) const;
+    void sortByPESEL();
+    void sortByName();
 private:
     std::vector<Student> student_;
 };
