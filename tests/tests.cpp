@@ -145,3 +145,22 @@ TEST_F(DatabaseTest, SortDbByName){
     EXPECT_EQ(content, expected);
 }
 
+TEST_F(DatabaseTest, RemoveStudentFromDB){
+    Student adam{
+            "Adam",
+            "Kowalski",
+            "ul. Dobra 134, 00-200 Warszawa",
+            123456,
+            "51223344556",
+            Gender::Male
+    };
+    db.addStudent(adam);
+
+    db.removeStudent(123456);
+
+    auto content = db.show();
+    auto expected = "";
+
+    EXPECT_EQ(content, expected);
+}
+

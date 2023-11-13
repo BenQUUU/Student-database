@@ -13,6 +13,7 @@ public:
     std::string searchStudentByPESEL(std::string pesel) const;
     void sortByPESEL();
     void sortByName();
+    void removeStudent(int index);
 private:
     std::vector<Student> student_;
 };

@@ -56,4 +56,17 @@ void Database::sortByName() {
     std::sort(student_.begin(), student_.end(), Student::compareByName);
 }
 
+void Database::removeStudent(int index) {
+    auto it = std::remove_if(student_.begin(), student_.end(),
+                             [index](const Student& student) {
+                                  return student.getIndexNumber() == index;
+                                  });
+
+    if (it != student_.end()) {
+        student_.erase(it, student_.end());
+    } else {
+        throw std::runtime_error("No student with this index was found in the database");
+    }
+}
+
 

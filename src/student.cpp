@@ -56,3 +56,7 @@ bool Student::compareByPESEL(const Student &a, const Student &b) {
 bool Student::compareByName(const Student &a, const Student &b) {
     return a.lastName_ < b.lastName_;
 }
+
+int Student::getIndexNumber() const {
+    return indexNumber_;
+}
