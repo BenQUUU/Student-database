@@ -1,4 +1,5 @@
 #include "../include/student.hpp"
+#include <vector>
 
 Student::Student(std::string firstName,
                  std::string lastName,
@@ -59,4 +60,22 @@ bool Student::compareByName(const Student &a, const Student &b) {
 
 int Student::getIndexNumber() const {
     return indexNumber_;
+}
+
+bool Student::verifyPESEL(std::string pesel){
+    const std::vector<int> digitWeight{1, 3, 7, 9, 1, 3, 7, 9, 1, 3};
+    int result = 0;
+    int checkDigit = 0;
+
+    if(pesel.length() != 11) {
+        return false;
+    }
+
+    for(size_t i = 0; i < digitWeight.size(); i++) {
+        result += digitWeight.at(i) * (pesel[i] - '0');
+    }
+
+    checkDigit = (10 -(result % 10)) % 10;
+
+    return checkDigit == pesel[10] - '0';
 }

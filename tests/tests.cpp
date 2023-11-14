@@ -164,3 +164,12 @@ TEST_F(DatabaseTest, RemoveStudentFromDB){
     EXPECT_EQ(content, expected);
 }
 
+TEST_F(DatabaseTest, PESELIsCorrect){
+    EXPECT_TRUE(Student::verifyPESEL("90090515836"));
+}
+
+TEST_F(DatabaseTest, PESELIsIncorrect){
+    EXPECT_FALSE(Student::verifyPESEL("11282512230"));
+    EXPECT_FALSE(Student::verifyPESEL("1128"));
+}
+
