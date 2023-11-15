@@ -62,7 +62,7 @@ int Student::getIndexNumber() const {
     return indexNumber_;
 }
 
-bool Student::verifyPESEL(std::string pesel){
+bool Student::verifyPESEL(const std::string &pesel){
     const std::vector<int> digitWeight{1, 3, 7, 9, 1, 3, 7, 9, 1, 3};
     int result = 0;
     int checkDigit = 0;

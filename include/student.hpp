@@ -22,7 +22,7 @@ public:
     int getIndexNumber() const;
     static bool compareByPESEL(const Student &a, const Student &b);
     static bool compareByName(const Student &a, const Student &b);
-    static bool verifyPESEL(std::string pesel);
+    static bool verifyPESEL(const std::string &pesel);
 private:
     std::string firstName_;
     std::string lastName_;
