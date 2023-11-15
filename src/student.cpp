@@ -31,6 +31,8 @@ std::string Student::getGenderAsString() const {
         case Gender::Female:
             return "Female";
     }
+
+    return "Unknown";
 }
 
 std::string Student::show() const {
