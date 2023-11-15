@@ -7,8 +7,7 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(SOURCE
         src/student.cpp
         src/database.cpp)
-
-add_executable(${PROJECT_NAME} ${SOURCE} src/main.cpp)
+set(FLAGS -Wall -Wextra -Wpedantic -Werror -std=c++20)
 
 include(FetchContent)
 FetchContent_Declare(
@@ -19,9 +18,13 @@ FetchContent_Declare(
 set(gtest_force_shared_crt ON CACHE BOOL "" FORCE)
 FetchContent_MakeAvailable(googletest)
 
-enable_testing()
+add_executable(${PROJECT_NAME} ${SOURCE} src/main.cpp)
+target_compile_options(${PROJECT_NAME} PRIVATE ${FLAGS})
 
+enable_testing()
 add_executable(${PROJECT_NAME}-ut tests/tests.cpp ${SOURCE})
+target_compile_options(${PROJECT_NAME}-ut PRIVATE ${FLAGS})
+
 target_link_libraries(
         ${PROJECT_NAME}-ut
         GTest::gtest_main
