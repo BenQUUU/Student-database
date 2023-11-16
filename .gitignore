@@ -1,4 +1,5 @@
 *.out
+*.json
 cmake-build-debug
 build
 .idea
