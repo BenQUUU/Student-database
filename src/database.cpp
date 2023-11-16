@@ -1,7 +1,4 @@
-#include <algorithm>
-#include <iostream>
 #include "../include/database.hpp"
-
 
 void Database::addStudent(const Student &s) {
     student_.emplace_back(s);
@@ -20,7 +17,7 @@ bool Database::isAdded(const Student &s) {
 std::string Database::show() const {
     std::string result = "";
     for(auto && student: student_){
-        result += student.show();
+        result += student.show() + '\n';
     }
 
     return result;
@@ -67,6 +64,10 @@ void Database::removeStudent(int index) {
     } else {
         throw std::runtime_error("No student with this index was found in the database");
     }
+}
+
+std::vector<Student> Database::getStudents() const {
+    return student_;
 }
 
 

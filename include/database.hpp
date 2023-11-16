@@ -1,6 +1,8 @@
 #pragma once
 
 #include <vector>
+#include <algorithm>
+#include <iostream>
 #include "student.hpp"
 
 class Database{
@@ -14,6 +16,7 @@ public:
     void sortByPESEL();
     void sortByName();
     void removeStudent(int index);
+    std::vector<Student> getStudents() const;
 private:
     std::vector<Student> student_;
 };

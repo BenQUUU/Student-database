@@ -1,5 +1,4 @@
 #include "../include/student.hpp"
-#include <vector>
 
 Student::Student(std::string firstName,
                  std::string lastName,
@@ -80,4 +79,32 @@ bool Student::verifyPESEL(const std::string &pesel){
     checkDigit = (10 -(result % 10)) % 10;
 
     return checkDigit == pesel[10] - '0';
+}
+
+json Student::to_json() const {
+    return {
+                {"firstName", firstName_},
+                {"lastName", lastName_},
+                {"address", address_},
+                {"indexNumber", indexNumber_},
+                {"pesel", pesel_},
+                {"gender", getGenderAsString()}
+    };
+}
+
+void Student::from_json(const json& j) {
+    firstName_ = j.at("firstName").get<std::string>();
+    lastName_ = j.at("lastName").get<std::string>();
+    address_ = j.at("address").get<std::string>();
+    indexNumber_ = j.at("indexNumber").get<int>();
+    pesel_ = j.at("pesel").get<std::string>();
+
+    std::string genderStr = j.at("gender").get<std::string>();
+    if (genderStr == "Male") {
+        gender_ = Gender::Male;
+    } else if (genderStr == "Female") {
+        gender_ = Gender::Female;
+    } else {
+        gender_ = Gender::Male;
+    }
 }

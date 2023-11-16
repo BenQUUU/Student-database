@@ -1,6 +1,10 @@
 #pragma once
 
 #include <string>
+#include <vector>
+#include "../include/json.hpp"
+
+using json = nlohmann::json;
 
 enum class Gender{
     Male,
@@ -9,6 +13,7 @@ enum class Gender{
 
 class Student{
 public:
+    Student() = default;
     Student(std::string firstName,
     std::string lastName,
     std::string address,
@@ -23,6 +28,8 @@ public:
     static bool compareByPESEL(const Student &a, const Student &b);
     static bool compareByName(const Student &a, const Student &b);
     static bool verifyPESEL(const std::string &pesel);
+    json to_json() const;
+    void from_json(const json &j);
 private:
     std::string firstName_;
     std::string lastName_;
