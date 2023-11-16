@@ -6,7 +6,8 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 set(SOURCE
         src/student.cpp
-        src/database.cpp)
+        src/database.cpp
+        src/filehandler.cpp)
 set(FLAGS -Wall -Wextra -Wpedantic -Werror -std=c++20)
 
 include(FetchContent)
