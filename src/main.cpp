@@ -1,8 +1,8 @@
 #include <iostream>
-#include "../include/database.hpp"
-#include "../include/student.hpp"
-#include "../include/filehandler.hpp"
+#include "../include/menu.hpp"
 
 int main() {
+    Menu menu("../students.json");
+    menu.start();
     return 0;
 }

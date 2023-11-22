@@ -11,6 +11,8 @@ enum class Gender{
     Female
 };
 
+Gender getGenderFromInput(const std::string &input);
+
 class Student{
 public:
     Student() = default;

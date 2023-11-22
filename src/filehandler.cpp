@@ -6,7 +6,7 @@ void JsonHandler::saveToFile(const std::string& filename, Database &db) {
         jsonData.push_back(student.to_json());
     }
 
-    std::ofstream file(filename, std::ios::app);
+    std::ofstream file(filename, std::ios::trunc);
     if (!file.is_open()) {
         std::cerr << "Failed to open the file for writing." << std::endl;
         return;

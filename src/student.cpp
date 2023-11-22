@@ -108,3 +108,15 @@ void Student::from_json(const json& j) {
         gender_ = Gender::Male;
     }
 }
+
+Gender getGenderFromInput(const std::string &input) {
+    if(input == "Male") {
+        return Gender::Male;
+    }
+    else if(input == "Female") {
+        return Gender::Female;
+    }
+    else {
+        return Gender::Male;
+    }
+}
