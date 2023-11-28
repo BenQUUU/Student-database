@@ -1,8 +1,6 @@
 #include "../include/menu.hpp"
 
-Menu::Menu(const std::string &filename) : filename_(filename) {
-    JsonHandler::loadFromFile(filename_, db_);
-}
+Menu::Menu(const std::string &filename) : filename_(filename) {}
 
 void Menu::showMenu() const {
     std::cout << "#####################" << '\n';
@@ -79,7 +77,14 @@ void Menu::removeStudent() {
 void Menu::start() {
     int choice = 0;
 
-    while(choice != 8) {
+    try {
+        JsonHandler::loadFromFile(filename_, db_);
+    }catch (std::runtime_error &e) {
+        std::cout << e.what() << '\n';
+        return;
+    }
+
+    while(true) {
         showMenu();
         std:: cin >> choice;
 
@@ -112,11 +117,15 @@ void Menu::start() {
             case 8:
                 JsonHandler::saveToFile(filename_, db_);
                 std::cout << "The program has completed successfully" << '\n';
-                break;
+                return;
             default:
                 std::cout << "Incorrect option, try again!" << '\n';
                 break;
         }
+        getchar();
+        std::cout << "\nPress any button to continue..";
+        getchar();
+        clearScreen();
     }
 
 }

@@ -26,4 +26,8 @@ void JsonHandler::loadFromFile(const std::string& filename, Database &db) {
             db.addStudent(student);
         }
     }
+    else {
+        std::cerr << "Something went wrong: ";
+        throw std::runtime_error("Failed to open the file!");
+    }
 }

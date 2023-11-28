@@ -2,7 +2,11 @@
 #include "../include/menu.hpp"
 
 int main() {
-    Menu menu("../students.json");
+    std::string filename = "";
+    std::cout << "Enter the name of the file to write/read: ";
+    std::cin >> filename;
+    Menu menu(filename);
+    menu.clearScreen();
     menu.start();
     return 0;
 }

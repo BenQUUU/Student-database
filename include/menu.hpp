@@ -14,11 +14,11 @@ class Menu {
 public:
     Menu(const std::string &filename);
     void start();
+    void clearScreen() const;
 private:
     Database db_;
     std::string filename_;
     void showMenu() const;
-    void clearScreen() const;
     void enterData();
     std::string getData() const;
     void removeStudent();
