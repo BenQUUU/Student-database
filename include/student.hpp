@@ -6,32 +6,33 @@
 
 using json = nlohmann::json;
 
-enum class Gender{
+enum class Gender {
     Male,
     Female
 };
 
-Gender getGenderFromInput(const std::string &input);
+Gender getGenderFromInput(const std::string& input);
 
-class Student{
+class Student {
 public:
     Student() = default;
     Student(std::string firstName,
-    std::string lastName,
-    std::string address,
-    int indexNumber,
-    std::string pesel,
-    Gender gender);
-    bool operator==(const Student &other) const;
+            std::string lastName,
+            std::string address,
+            int indexNumber,
+            std::string pesel,
+            Gender gender);
+    bool operator==(const Student& other) const;
     std::string show() const;
     std::string getLastName() const;
     std::string getPESEL() const;
     int getIndexNumber() const;
-    static bool compareByPESEL(const Student &a, const Student &b);
-    static bool compareByName(const Student &a, const Student &b);
-    static bool verifyPESEL(const std::string &pesel);
+    static bool compareByPESEL(const Student& a, const Student& b);
+    static bool compareByName(const Student& a, const Student& b);
+    static bool verifyPESEL(const std::string& pesel);
     json to_json() const;
-    void from_json(const json &j);
+    void from_json(const json& j);
+
 private:
     std::string firstName_;
     std::string lastName_;

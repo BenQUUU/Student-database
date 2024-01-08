@@ -1,13 +1,13 @@
 #include "../include/database.hpp"
 
-void Database::addStudent(const Student &s) {
+void Database::addStudent(const Student& s) {
     student_.emplace_back(s);
 }
 
-bool Database::isAdded(const Student &s) {
+bool Database::isAdded(const Student& s) {
     auto iterator = std::find(student_.begin(), student_.end(), s);
 
-    if(iterator != student_.end()){
+    if (iterator != student_.end()) {
         return true;
     }
 
@@ -16,7 +16,7 @@ bool Database::isAdded(const Student &s) {
 
 std::string Database::show() const {
     std::string result = "";
-    for(auto && student: student_){
+    for (auto&& student : student_) {
         result += student.show() + '\n';
     }
 
@@ -28,8 +28,8 @@ void Database::displayDatabase() const {
 }
 
 std::string Database::searchStudentByName(std::string name) const {
-    for(auto && student : student_){
-        if(student.getLastName() == name){
+    for (auto&& student : student_) {
+        if (student.getLastName() == name) {
             return student.show();
         }
     }
@@ -37,8 +37,8 @@ std::string Database::searchStudentByName(std::string name) const {
 }
 
 std::string Database::searchStudentByPESEL(std::string pesel) const {
-    for(auto && student : student_){
-        if(student.getPESEL() == pesel){
+    for (auto&& student : student_) {
+        if (student.getPESEL() == pesel) {
             return student.show();
         }
     }
@@ -56,8 +56,8 @@ void Database::sortByName() {
 void Database::removeStudent(int index) {
     auto it = std::remove_if(student_.begin(), student_.end(),
                              [index](const Student& student) {
-                                  return student.getIndexNumber() == index;
-                                  });
+                                 return student.getIndexNumber() == index;
+                             });
 
     if (it != student_.end()) {
         student_.erase(it, student_.end());
@@ -69,5 +69,3 @@ void Database::removeStudent(int index) {
 std::vector<Student> Database::getStudents() const {
     return student_;
 }
-
-
