@@ -8,7 +8,8 @@ set(SOURCE
         src/student.cpp
         src/database.cpp
         src/filehandler.cpp
-        src/menu.cpp)
+        src/menu.cpp
+        src/person.cpp)
 set(FLAGS -Wall -Wextra -Wpedantic -Werror -std=c++20)
 
 include(FetchContent)
