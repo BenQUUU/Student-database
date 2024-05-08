@@ -1,14 +1,10 @@
 #pragma once
 
 #include <string>
-#include "../include/json.hpp"
+#include "gender.hpp"
+#include "json.hpp"
 
 using json = nlohmann::json;
-
-enum class Gender {
-    Male,
-    Female
-};
 
 inline Gender getGenderFromInput(const std::string& input) {
     if (input == "Male") {
@@ -28,7 +24,8 @@ public:
            const std::string& address,
            const std::string& pesel,
            Gender gender);
-    virtual ~Person();
+
+    virtual ~Person() = default;
 
     std::string getLastName() const;
     std::string getPESEL() const;
@@ -36,10 +33,11 @@ public:
 
     virtual std::string show() const = 0;
     virtual int getIndexNumber() const = 0;
+    virtual void setIndexNumber(int index) = 0;
     virtual double getSalary() const = 0;
-    virtual bool setSalary(double salary) = 0;
+    virtual void setSalary(double salary) = 0;
 
-    bool verifyPESEL(const std::string& pesel);
+    // bool verifyPESEL(const std::string& pesel);
 
     virtual json to_json() const = 0;
     virtual void from_json(const json& j) = 0;
